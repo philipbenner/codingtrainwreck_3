@@ -2,7 +2,7 @@ function Snake (){
 	this.startX;
 	this.startY;
 	this.rectSize = 10;
-	this.dir = [1,0];
+	this.dir = [10,0];
 
 	this.x = 10;//floor(width/2);
 	this.y = 10;//floor(height/2);
@@ -22,18 +22,19 @@ function Snake (){
 
 	this.show = function (){
 		push();
+		
 		noStroke();
 		fill(255);
 
-		//this.x = this.x + this.dir[0] * this.rectSize;
-		//this.y = this.y + this.dir[1] * this.rectSize;
+		this.x = this.x + this.dir[0];
+		this.y = this.y + this.dir[1];
 
-		if (this.x > 0 && this.x < width && this.y > 0 && this.y < height){
+		if (this.x >= -1 && this.x < width && this.y >= -1 && this.y < height){
 			rect(this.x, this.y, this.rectSize, this.rectSize);
 		} else {
 			this.x = this.startX;
 			this.y = this.startY;
-			this.direction(1, 0);
+			this.direction(10, 0);
 		}
 
 		pop();
