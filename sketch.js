@@ -1,8 +1,14 @@
 var s;
+var lcount;
 
 function setup() {
+	lcount = width/10;
 	frameRate(10);
-	createCanvas(512, 512);
+	createCanvas(400, 400);
+	createSnake();
+}
+
+function createSnake (){
 	s = new Snake();
 	s.init();
 }
@@ -21,6 +27,14 @@ function keyPressed(){
 
 function draw() {
 	background(0);
+	//push();
+	stroke(255,255,255,50);
+
+	for (var l = 0; l <400/10; l++){
+		line(10*l, 0, 10*l, height);
+		line(0, 10*l, width, 10*l);
+	}
+	
 	s.show();
 
 }
