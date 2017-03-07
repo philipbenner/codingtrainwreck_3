@@ -1,3 +1,10 @@
+/* the more i thought about this the more I thought this wasn't the correct approach.
+Nor one that the original coders would have used. I feel this way because of the 'food'
+The food needs to fall in the 'grid' and not where the snake has been. I also believe programmers
+of the Basic language would be thinking on more of a grid/array/matrix than in the more free 
+world of Processing/flash/or Canvas(JS)
+*/
+
 var s;
 var lcount;
 
