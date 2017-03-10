@@ -3,6 +3,9 @@ function Grid (){
 	this.fieldSize = 300;//squared
 	this.field = [];
 	this.snake;
+	this.food;
+	this.foodLoc;
+	this.foodExists = false;
 	this.divisions = floor(this.fieldSize/this.blockSize);
 
 	this.init = function() {
@@ -17,6 +20,7 @@ function Grid (){
 		// redraw grid with lines rather than drawing 900 boxes
 		
 		this.snake = new Snake(0, this.divisions, this.blockSize, this);
+		this.food = new Food();
 	}
 
 	this.drawGrid = function (){
@@ -24,15 +28,30 @@ function Grid (){
 		for (var i = this.field.length - 1; i >= 0; i--) {
 			this.field[i].show();
 		};
+		var snakeList = this.snake.show()
+		this.showSnake(snakeList); 
 
-		this.showSnake(this.snake.show()); 
-		
+		if (!this.foodExists){
+			this.foodLoc = this.food.createFood(snakeList);
+			
+			this.foodExists = true;
+		}else{
+			if(this.foodLoc == snakeList[0]){
+				this.foodExists = false;
+				this.snake.extend();
+			}else{
+				this.showFood(this.foodLoc);	
+			}
+		}
+
 		if(gameState){	
-			gameState = false;
+			//gameState = false;
 		}
 
 	}
-
+	this.showFood = function(ind) {
+		this.field[ind].foodBlock();
+	}
 	this.showSnake = function (a){
 
 		for (var i = 0; i < a.length; i++) {
@@ -41,6 +60,8 @@ function Grid (){
 		};
 		//this.field[a].fillBlock();
 	}
+	
+
 
 	this.direction  = function(x,y){
 		this.snake.direction(x,y)

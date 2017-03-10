@@ -22,4 +22,12 @@ function Box (_x, _y, _i,_b,_p){
 
 		pop();
 	}
+	this.foodBlock = function  () {
+		push()
+		fill(255);
+		stroke(0);
+		ellipse(this.pos[0]*this.blockSize+((this.blockSize)/2),this.pos[1]*this.blockSize+((this.blockSize)/2), this.blockSize);
+
+		pop();
+	}
 }

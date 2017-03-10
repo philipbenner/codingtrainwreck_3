@@ -4,7 +4,7 @@ function Snake (_i,_d, _b, _p){
 	this.index = this.startIndex;
 	this.division = _d;
 	this.blockSize = _b;
-	this.snakeLength = 5;
+	this.snakeLength = 2;
 	this.snakeHead = this.startIndex;
 	this.move = 1
 	this.list = [0];
@@ -51,7 +51,9 @@ function Snake (_i,_d, _b, _p){
 		return this.list;
 		
 	}
-
+	this.extend = function (){
+		this.snakeLength = this.snakeLength + 1;
+	}
 	this.direction = function (x,y){
 		if(x > 0 && y == 0){
 			this.move = 1;
