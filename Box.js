@@ -5,19 +5,19 @@ function Box (_x, _y, _i,_b,_p){
 	this.parent = _p;
 
 	this.show = function (){
-		push()
+		/*push()
 		noFill();
-		stroke(255,255,255,20);
+		stroke(100,100,100,255);
 		strokeWeight(1);
 		rect(this.pos[0]*this.blockSize,this.pos[1]*this.blockSize, this.blockSize, this.blockSize);
 
-		pop();
+		pop();*/
 
 	}
 	this.fillBlock = function  () {
 		push()
 		fill(255);
-		stroke(0);
+		stroke(100);
 		rect(this.pos[0]*this.blockSize,this.pos[1]*this.blockSize, this.blockSize, this.blockSize);
 
 		pop();
@@ -25,7 +25,7 @@ function Box (_x, _y, _i,_b,_p){
 	this.foodBlock = function  () {
 		push()
 		fill(255);
-		stroke(0);
+		stroke(100);
 		ellipse(this.pos[0]*this.blockSize+((this.blockSize)/2),this.pos[1]*this.blockSize+((this.blockSize)/2), this.blockSize);
 
 		pop();

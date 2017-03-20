@@ -1,19 +1,118 @@
 <html>
 <head>
+	<title>Snake game in Javascript and p5.js - Coding Trainwreck - Clean Phil Wanted</title>
   <meta charset="UTF-8">
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
   <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
   <!-- uncomment lines below to include extra p5 libraries -->
-  <!--<script language="javascript" src="libraries/p5.dom.js"></script>-->
+ 
+  
+  <script language="javascript" src="libraries/p5.dom.js"></script>
   <!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
   <script language="javascript" type="text/javascript" src="Grid.js"></script>
   <script language="javascript" type="text/javascript" src="Box.js"></script> 
   <script language="javascript" type="text/javascript" src="Snake.js"></script> 
   <script language="javascript" type="text/javascript" src="Food.js"></script> 
+  <script language="javascript" type="text/javascript" src="UI.js"></script> 
+
+  
   <!-- this line removes any default padding and style. you might only need one of these values set. -->
-  <style> body {padding: 0; margin: 0;} </style>
+  <style> 
+	  *{
+	  	padding: 0; margin: 0;
+	  }
+	  
+	  body{
+	  	width: 100%;
+	  	height: 100%;
+	  }
+	  #container {
+	  	width: 320px;
+	  	height: 568px;
+	  	margin: auto;
+	  }
+	  	/*html, body {
+		  
+		  width:100%;
+		  height:100%;
+		}
+	
+	body {  overflow: hidden;background: red;} 
+  	canvas { margin: auto;}*/
+  </style>
 </head>
 
 <body>
+	<div id="container"></div>
+
+	<script type="text/javascript">
+  	var fixed = document.getElementById('container');
+	fixed.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+	}, false);
+
+	document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+
+var xDown = null;                                                        
+var yDown = null;                                                        
+
+function handleTouchStart(evt) {                                         
+    xDown = evt.touches[0].clientX;                                      
+    yDown = evt.touches[0].clientY;                                      
+};                                                
+
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+        	grid.direction(-1,0);
+        	if(!gameState){
+        		grid.reset();
+        	}
+        	gameState = true;
+            /* left swipe */ 
+        } else {
+        	grid.direction(1,0);
+        	if(!gameState){
+        		grid.reset();
+        	}
+        	gameState = true;
+            /* right swipe */
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+			grid.direction(0,-1);
+			if(!gameState){
+        		grid.reset();
+        	}
+			gameState = true;         
+			/* up swipe */ 
+        } else { 
+        	grid.direction(0,1);
+        	if(!gameState){
+        		grid.reset();
+        	}
+        	gameState = true;
+            /* down swipe */
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
+
+ 	</script>
 </body>
 </html>

@@ -3,6 +3,7 @@ function Snake (_i,_d, _b, _p){
 	this.parent = _p;
 	this.index = this.startIndex;
 	this.division = _d;
+
 	this.blockSize = _b;
 	this.snakeLength = 2;
 	this.snakeHead = this.startIndex;
@@ -11,12 +12,20 @@ function Snake (_i,_d, _b, _p){
 
 	this.init = function (){
 	}
+	this.reset = function (){
+		//console.log('reset')
+		this.snakeLength = 2;
+		this.snakeHead = this.startIndex;
+		this.list = [0];
+		this.direction(1,0)
+
+	}
 
 	this.show = function () {
 		var sideConstrain = false;
 		if (gameState){
 			var tempHead = this.snakeHead + this.move;
-			if( tempHead >= 0 && tempHead <= 899){
+			if( tempHead >= 0 && tempHead <= (this.division*this.division)-1){
 				
 				for (var i = 0; i < this.division; i++) {
 					var tempIndex = i*this.division;
@@ -36,7 +45,7 @@ function Snake (_i,_d, _b, _p){
 
 					
 
-					// need a better constaint system... 
+					// need a better constraint system... 
 				
 					this.list = newPos;
 					this.snakeHead = tempHead;
@@ -44,7 +53,8 @@ function Snake (_i,_d, _b, _p){
 				}
 				
 			} else{
-				console.log('stopped');
+				//console.log('stopped');
+				gameState = false;
 			}
 		}
 		//console.log(this.snakeHead)
