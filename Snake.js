@@ -7,10 +7,12 @@ function Snake (_i,_d, _b, _p){
 	this.blockSize = _b;
 	this.snakeLength = 2;
 	this.snakeHead = this.startIndex;
-	this.move = 1
+	this.move = 1;
 	this.list = [0];
+	this.dir = 0;
 
 	this.init = function (){
+		//this.reset();
 	}
 	this.reset = function (){
 		//console.log('reset')
@@ -67,12 +69,16 @@ function Snake (_i,_d, _b, _p){
 	this.direction = function (x,y){
 		if(x > 0 && y == 0){
 			this.move = 1;
+			this.dir = 0;
 		} else if(x < 0 && y == 0){
 			this.move = -1;
+			this.dir = 2;
 		} else if(y > 0 && x == 0){
 			this.move = this.division;
+			this.dir = 3;
 		} else if(y < 0 && x == 0){
 			this.move = -this.division;
+			this.dir = 2;
 		}
 		
 	}

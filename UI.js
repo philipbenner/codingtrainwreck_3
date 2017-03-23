@@ -7,7 +7,7 @@ function UI (_g) {
 
 	this.drawFrame = function(){
 		push();
-		stroke (255);
+		stroke (0);
 		strokeWeight(2);
 		noFill();
 		rect(10,10, this.w-20, this.h-20);
@@ -19,7 +19,7 @@ function UI (_g) {
 	this.drawTitle =  function() {
 		push();
 		textSize(23);
-		fill(255);
+		fill(0);
 		text("The Coding Trainwreck", 40, 43);
 		textSize(51);
 		text("SSSNAKE", 38, 88);
@@ -28,6 +28,7 @@ function UI (_g) {
 	this.drawGameModal =  function() {
 		// need to work on this... i'm sort of locking in size here... 
 		push();
+		noStroke();
 		fill(255, 0,0,50);
 		rect(20-2,100-2,this.modalSize+4,this.modalSize+4)
 		pop();
@@ -37,14 +38,14 @@ function UI (_g) {
 	}
 	this.drawGameStart = function(){
 		push();
-		stroke(255);
+		stroke(0);
 		strokeWeight(1);
-		fill(0);
+		fill(255);
 		translate(40, 180);
 		rect(0,0,240,60);
 		noStroke();
 		textSize(20);
-		fill(255);
+		fill(0);
 		text("Press Enter to Start!", 24, 40);
 		pop();
 	}

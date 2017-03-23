@@ -41,7 +41,7 @@ function mousePressed (){
 }
 
 function draw() {
-	background(0);
+	background(255);
 	push()
 	translate(20, 100);
 	grid.drawGrid();
